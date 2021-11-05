@@ -131,7 +131,22 @@ def admin_mode_select():
         chosen_admin_mode = options_input()
     return chosen_admin_mode
 
-def
+def add_update_a_language(lang_dict):
+    print("choose a language to update, or pick a new number to add a language: " )
+    print("current langauges are")
+    print_options(lang_dict)
+    lang = options_input()
+    is_lang_integer = isinstance(lang, int)
+    while not is_lang_integer:
+        print("Invalid selection. Try again.")
+        lang = options_input()
+        is_lang_integer = isinstance(lang, int)
+    name_question = input("enter new question for name")
+    greeting_text = input("greeting text")
+    return name_question, greeting_text, lang
+
+
+
 
 
 if __name__ == '__main__':
@@ -143,9 +158,12 @@ if __name__ == '__main__':
     while chosen_mode == 1:
         admin_type = admin_mode_select()
         if admin_type == 1:
-            add_a_language()
+            n = len(lang_dict)
+            lang_dict[n] = add_update_a_language(lang_dict)
+
         elif admin_type == 2:
-            update_a_language()
+
+            lang_dict[n] = update_a_language()
         elif admin_type == 3:
             chosen_mode = 2
 
